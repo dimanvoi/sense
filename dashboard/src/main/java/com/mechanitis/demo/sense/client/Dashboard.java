@@ -6,7 +6,6 @@ import com.mechanitis.demo.sense.client.mood.MoodsParser;
 import com.mechanitis.demo.sense.client.mood.TweetMood;
 import com.mechanitis.demo.sense.client.user.LeaderboardData;
 import com.mechanitis.demo.sense.infrastructure.ClientEndpoint;
-import com.mechanitis.demo.sense.infrastructure.MessageHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
