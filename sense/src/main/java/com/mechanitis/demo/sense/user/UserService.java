@@ -10,7 +10,10 @@ public class UserService implements Runnable {
     public UserService() {
         service = new Service("ws://localhost:8081/tweets/",
                               "/users/", PORT,
-                              (message) -> Parser.getValueFromMessage(message, "\"screen_name\":\""));
+                              (message) -> {
+                                  final String fieldName = "\"screen_name\":\"";
+                                  return Parser.getValueForField(fieldName, message);
+                              });
     }
 
     @Override

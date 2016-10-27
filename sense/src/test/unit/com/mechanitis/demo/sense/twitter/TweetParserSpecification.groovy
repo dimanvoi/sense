@@ -25,18 +25,10 @@ class TweetParserSpecification extends Specification {
 
     def 'should return the tweet itself from the full Twitter content'() {
         when:
-        def tweetContent = Parser.getTextFrom(EXAMPLE_INPUT)
+        def tweetContent = Parser.getTextFromMessage(EXAMPLE_INPUT)
 
         then:
         tweetContent == "A simplistic approach to your life is a healthy antidote to yo... More for Sagittarius http:\\/\\/t.co\\/cRS9M0bneh"
-    }
-
-    def 'should return the user twitter handle'() {
-        when:
-        def location = Parser.getValueFromMessage(EXAMPLE_INPUT, "\"screen_name\":\"")
-
-        then:
-        location == 'cupcakecutie07'
     }
 
 }

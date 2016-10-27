@@ -1,13 +1,12 @@
 package com.mechanitis.demo.sense.mood;
 
-import com.mechanitis.demo.sense.twitter.Parser;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
 import static com.mechanitis.demo.sense.mood.Mood.HAPPY;
 import static com.mechanitis.demo.sense.mood.Mood.SAD;
+import static com.mechanitis.demo.sense.twitter.Parser.getTextFromMessage;
 import static java.util.stream.Collectors.joining;
 
 public class MoodAnalyser {
@@ -36,7 +35,7 @@ public class MoodAnalyser {
     }
 
     public static String analyseMood(String message) {
-        String[] wordsInMessage = Parser.getValueFromMessage(message, "\"text\":\"").split("\\s");
+        String[] wordsInMessage = getTextFromMessage(message).split("\\s");
         return Stream.of(wordsInMessage)
                      .distinct()
                      .map(String::toLowerCase)
