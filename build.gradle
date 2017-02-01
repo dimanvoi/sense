@@ -1,5 +1,6 @@
 configure(subprojects.findAll()) {
     apply plugin: 'groovy'
+    sourceCompatibility = JavaVersion.VERSION_1_8
 
     repositories {
         mavenCentral()
@@ -13,6 +14,6 @@ configure(subprojects.findAll()) {
     }
 
     task wrapper(type: Wrapper) {
-        gradleVersion = '2.3'
+        gradleVersion = '3.3'
     }
 }
