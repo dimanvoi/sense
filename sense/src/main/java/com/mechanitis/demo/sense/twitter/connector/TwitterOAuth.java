@@ -38,18 +38,18 @@ public class TwitterOAuth {
         accessTokenSecret = prop.get("ACCESS_TOKEN_SECRET");
         token = prop.get("TOKEN");
         consumerKey = prop.get("CONSUMER_KEY");
-        if (!validateProperties()) {
+        if (propertiesInvalid()) {
             //if there aren't any environment variables, looks for the properties file
             loadFromPropertiesFile();
         }
-        if (!validateProperties()) {
+        if (propertiesInvalid()) {
             throw new RuntimeException("You must define the Twitter security tokens either as environment " +
                                        "variables or in oauth.properties");
         }
     }
 
-    private boolean validateProperties() {
-        return !(consumerKey == null ||
+    private boolean propertiesInvalid() {
+        return (consumerKey == null ||
                  accessTokenSecret == null ||
                  token == null ||
                  consumerSecret == null);

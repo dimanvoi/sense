@@ -5,7 +5,7 @@ import com.mechanitis.demo.sense.client.mood.MoodController;
 import com.mechanitis.demo.sense.client.user.LeaderboardController;
 import javafx.fxml.FXML;
 
-public class DashboardController {
+class DashboardController {
     @FXML private MoodController moodController;
     @FXML private HappinessController happyController;
     @FXML private LeaderboardController leaderboardController;
