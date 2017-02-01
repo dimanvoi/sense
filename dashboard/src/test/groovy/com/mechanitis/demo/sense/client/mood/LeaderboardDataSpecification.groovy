@@ -61,9 +61,9 @@ class LeaderboardDataSpecification extends Specification {
     }
 
 
-    public static class StubApplication extends Application {
+    static class StubApplication extends Application {
         @Override
-        public void start(Stage primaryStage) throws Exception {
+        void start(Stage primaryStage) throws Exception {
         }
     }
 
