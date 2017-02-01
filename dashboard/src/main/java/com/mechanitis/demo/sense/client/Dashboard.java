@@ -2,6 +2,8 @@ package com.mechanitis.demo.sense.client;
 
 import com.mechanitis.demo.sense.client.mood.HappinessChartData;
 import com.mechanitis.demo.sense.client.mood.MoodChartData;
+import com.mechanitis.demo.sense.client.mood.MoodsParser;
+import com.mechanitis.demo.sense.client.mood.TweetMood;
 import com.mechanitis.demo.sense.client.user.LeaderboardData;
 import com.mechanitis.demo.sense.infrastructure.ClientEndpoint;
 import javafx.application.Application;
@@ -25,6 +27,12 @@ public class Dashboard extends Application {
         userEndpoint.addListener(leaderboardData);
         userEndpoint.connect();
 
+        ClientEndpoint<TweetMood> moodEndpoint = new ClientEndpoint<>
+                ("ws://localhost:8082/moods/", MoodsParser::parse);
+        moodEndpoint.addListener(moodChartData);
+        moodEndpoint.addListener(happinessChartData);
+        moodEndpoint.connect();
+
         // initialise the UI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         primaryStage.setTitle("Twitter Dashboard");
@@ -33,9 +41,9 @@ public class Dashboard extends Application {
 
         // wire up the models to the controllers
         DashboardController dashboardController = loader.getController();
-//        dashboardController.getLeaderboardController().setData(leaderboardData);
-//        dashboardController.getMoodController().setData(moodChartData);
-//        dashboardController.getHappinessController().setData(happinessChartData);
+        dashboardController.getLeaderboardController().setData(leaderboardData);
+        dashboardController.getMoodController().setData(moodChartData);
+        dashboardController.getHappinessController().setData(happinessChartData);
 
         // let's go!
         primaryStage.setScene(scene);
